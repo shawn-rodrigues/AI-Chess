@@ -7,9 +7,9 @@ class Menu:
     def __init__(self, screen):
         self.screen = screen
         self.vscomputer = ui.Button(screen, Config.width//2, Config.height//2, 200, 80, "AI Player")
-        self.multiplayer = ui.Button(screen, Config.width//2, Config.height//2 + 100, 200, 80, "Multiplayer")
+        #self.multiplayer = ui.Button(screen, Config.width//2, Config.height//2 + 100, 200, 80, "Multiplayer")
         # self.online = ui.Button(screen, Config.width//2, Config.height//2 + 200, 200, 80, "Online")
-        self.exit = ui.Button(screen, Config.width//2, Config.height//2 + 200, 200, 80, "Exit")
+        self.exit = ui.Button(screen, Config.width//2, Config.height//2 + 100, 200, 80, "Exit")
         self.background = pygame.image.load("./assets/images/background1.jpg")
         self.background = pygame.transform.smoothscale(self.background, Config.resolution)
         self.title = ui.TextUI(self.screen, "CHESS", Config.width//1.2, Config.height//6, 140, (255, 255, 255))
@@ -20,7 +20,7 @@ class Menu:
 
     def DrawButtons(self):
         self.vscomputer.Draw()
-        self.multiplayer.Draw()
+        #self.multiplayer.Draw()
         #self.online.Draw()
         self.exit.Draw()
         self.title.Draw()
@@ -32,11 +32,11 @@ class Menu:
             self.vscomputer.tempcolor = (255, 255, 180)
             print("vs computer screen")
             self.chess.vsComputer()
-        elif self.multiplayer.get_rect().collidepoint(mouse_position):
-            self.chess.gameOver = False
-            self.multiplayer.tempcolor = (255, 255, 180)
-            print("multiplayer screen")
-            self.chess.multiplayer()
+        #elif self.multiplayer.get_rect().collidepoint(mouse_position):
+          #  self.chess.gameOver = False
+            #self.multiplayer.tempcolor = (255, 255, 180)
+           # print("multiplayer screen")
+          #  self.chess.multiplayer()
         # self.online.get_rect().collidepoint(mouse_position):
           #  self.chess.gameOver = False
          #   self.online.tempcolor = (255, 255, 180)
