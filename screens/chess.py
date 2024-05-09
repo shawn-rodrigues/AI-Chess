@@ -2,7 +2,7 @@ import pygame
 import sys
 import time
 
-from setting import Config, sounds
+from setting import Config
 from tools import OnBoard, Position
 from utils import bh, oh, ch
 from board import Board
@@ -32,18 +32,30 @@ class Chess:
         # Minimax(depht, chess_board, activate_alpha_beta_pruning = Default(true))
         self.ComputerAI = Minimax(Config.AI_DEPTH, self.board, True, True)
 
-    def GetFrameRate(self):
-        return self.clock.get_fps()
+
 
     def vsComputer(self):
         pygame.event.clear()
-        sounds.game_start_sound.play()
+        ai_side = "Black"
+        user_side = "White"
+        side_text = f"AI: {ai_side}"
+
+        # Create a font object
+        font = pygame.font.Font(None, 36)
+
+        # Render the text
+        text_surface = font.render(side_text, True, (255, 255, 255))
+        text_rect = text_surface.get_rect(left=(Config.width // 1.2))
+        # Main game loop
         while not self.gameOver:
             self.clock.tick(Config.fps)
             self.screen.fill((0, 0, 0))
             self.getMousePosition()
-            # update window caption
-            pygame.display.set_caption("Chess : VS Computer " + str(int(self.GetFrameRate())))
+            pygame.display.set_caption("Chess : AI VS USER ")
+
+            # Draw the text on the screen
+            self.screen.blit(text_surface, text_rect)
+
             self.display()
             self.ComputerMoves(1)
             if self.gameOver == False:
@@ -51,20 +63,6 @@ class Chess:
                     self.HandleEvents()
                     self.IsGameOver()
 
-
-    def multiplayer(self):
-        pygame.event.clear()
-        sounds.game_start_sound.play()
-        while not self.gameOver:
-            self.clock.tick(Config.fps)
-            self.screen.fill((0, 0, 0))
-            self.getMousePosition()
-            # update window caption
-            pygame.display.set_caption("Chess : Multiplayer " + str(int(self.GetFrameRate())))
-            self.display()
-            if self.animateSpot >= Config.spotSize:
-                self.HandleEvents()
-            self.IsGameOver()
 
     def display(self):
         self.Render()
@@ -109,9 +107,9 @@ class Chess:
 
             if bestmove:
                 if self.board.GetPiece(bestmove) != None:
-                    sounds.move_sound.play()
+                    None
                 else:
-                    self.move_sound.play()
+                    None
 
 
     def HandleOnLeftMouseButtonUp(self):
@@ -121,11 +119,10 @@ class Chess:
                 if self.AdjustedMouse in self.selectedPieceCaptures:
                     self.board.Move(self.selectedPiece, self.AdjustedMouse)
                     # play sounds
-                    sounds.capture_sound.play()
+
                 elif self.AdjustedMouse in self.selectedPieceMoves :
                     self.board.Move(self.selectedPiece, self.AdjustedMouse)
                     # play sound
-                    sounds.move_sound.play()
                 self.ReleasePiece()
             elif self.CanBeReleased:
                 self.ReleasePiece()
@@ -310,9 +307,9 @@ class Chess:
 
     def gameOverWindow(self):
         if self.board.winner >= 0:
-            sounds.game_over_sound.play()
+            None
         else:
-            sounds.stalemate_sound.play()
+            None
         time.sleep(2)
         self.screen.blit(self.gameOverBackground, (0, 0))
         self.gameOverHeader.Draw()

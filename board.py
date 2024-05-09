@@ -1,6 +1,6 @@
 import pygame
 from pieces import *
-from setting import Config, sounds
+from setting import Config
 from tools import Position, OnBoard
 import math
 from Fen import *

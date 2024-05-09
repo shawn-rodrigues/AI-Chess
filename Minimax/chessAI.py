@@ -3,11 +3,13 @@ from pieces import Pawn
 import math
 
 class Minimax(object):
-    def __init__(self, depth, board, AlphBetaPruning=True, UsePointMaps=True):
+    def __init__(self, depth, board, AlphBetaPruning=True, UsePointMaps=True, side=0):
         self.depth = depth
         self.board = board
         self.AlphaBetaPruning = AlphBetaPruning
         self.UsePointMaps = UsePointMaps
+        self.side = side
+
 
     def Start(self, depth):
         bestMove = None

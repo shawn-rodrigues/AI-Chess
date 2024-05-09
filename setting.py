@@ -7,8 +7,8 @@ class Setting:
     def __init__(self):
         self.boardSize = 8
         self.windowIconSize = 30
-        self.width = 1600
-        self.height = 900
+        self.width = 1300
+        self.height = 720
         self.resolution = (self.width, self.height)
         self.top_offset = 20
         self.spotSize = (self.height - self.top_offset) // self.boardSize
@@ -38,17 +38,17 @@ class Setting:
             {"dark": (118, 148, 85), "light": (234, 238, 210), "outline": (0, 0, 0)},
         ]
 
-class Sound:
-    def __init__(self):
-        self.capture_sound = pygame.mixer.Sound("./assets/sounds/capture_sound.mp3")
-        self.castle_sound = pygame.mixer.Sound("./assets/sounds/castle_sound.mp3")
-        self.check_sound = pygame.mixer.Sound("./assets/sounds/check_sound.mp3")
-        self.checkmate_sound = pygame.mixer.Sound("./assets/sounds/checkmate_sound.mp3")
-        self.game_over_sound = pygame.mixer.Sound("./assets/sounds/gameover_sound.mp3")
-        self.game_start_sound = pygame.mixer.Sound("./assets/sounds/start_sound.mp3")
-        self.move_sound = pygame.mixer.Sound("./assets/sounds/move_sound.mp3")
-        self.stalemate_sound = pygame.mixer.Sound("./assets/sounds/stalemate_sound.mp3")
-        self.pop = pygame.mixer.Sound("./assets/sounds/pop.mp3")
+# class Sound:
+#     def __init__(self):
+#         self.capture_sound = pygame.mixer.Sound("./assets/sounds/capture_sound.mp3")
+#         self.castle_sound = pygame.mixer.Sound("./assets/sounds/castle_sound.mp3")
+#         self.check_sound = pygame.mixer.Sound("./assets/sounds/check_sound.mp3")
+#         self.checkmate_sound = pygame.mixer.Sound("./assets/sounds/checkmate_sound.mp3")
+#         self.game_over_sound = pygame.mixer.Sound("./assets/sounds/gameover_sound.mp3")
+#         self.game_start_sound = pygame.mixer.Sound("./assets/sounds/start_sound.mp3")
+#         self.move_sound = pygame.mixer.Sound("./assets/sounds/move_sound.mp3")
+#         self.stalemate_sound = pygame.mixer.Sound("./assets/sounds/stalemate_sound.mp3")
+#         self.pop = pygame.mixer.Sound("./assets/sounds/pop.mp3")
 
 Config = Setting()
-sounds = Sound()
+# sounds = Sound()

@@ -1,5 +1,5 @@
 import pygame
-from setting import Config, sounds
+from setting import Config
 from screens.chess import Chess
 import ui
 
@@ -7,8 +7,6 @@ class Menu:
     def __init__(self, screen):
         self.screen = screen
         self.vscomputer = ui.Button(screen, Config.width//2, Config.height//2, 200, 80, "AI Player")
-        #self.multiplayer = ui.Button(screen, Config.width//2, Config.height//2 + 100, 200, 80, "Multiplayer")
-        # self.online = ui.Button(screen, Config.width//2, Config.height//2 + 200, 200, 80, "Online")
         self.exit = ui.Button(screen, Config.width//2, Config.height//2 + 100, 200, 80, "Exit")
         self.background = pygame.image.load("./assets/images/background1.jpg")
         self.background = pygame.transform.smoothscale(self.background, Config.resolution)
@@ -20,8 +18,6 @@ class Menu:
 
     def DrawButtons(self):
         self.vscomputer.Draw()
-        #self.multiplayer.Draw()
-        #self.online.Draw()
         self.exit.Draw()
         self.title.Draw()
 
@@ -32,27 +28,15 @@ class Menu:
             self.vscomputer.tempcolor = (255, 255, 180)
             print("vs computer screen")
             self.chess.vsComputer()
-        #elif self.multiplayer.get_rect().collidepoint(mouse_position):
-          #  self.chess.gameOver = False
-            #self.multiplayer.tempcolor = (255, 255, 180)
-           # print("multiplayer screen")
-          #  self.chess.multiplayer()
-        # self.online.get_rect().collidepoint(mouse_position):
-          #  self.chess.gameOver = False
-         #   self.online.tempcolor = (255, 255, 180)
-         #   print("online button screen")
         elif self.exit.get_rect().collidepoint(mouse_position):
             self.exit.tempcolor = (255, 255, 180)
             self.running = False
-
-    def GetFrameRate(self):
-        return self.clock.get_fps()
 
     def Run(self):
         while self.running:
             self.clock.tick(Config.fps)
             # update caption and frame rate
-            pygame.display.set_caption("Chess " + str(int(self.GetFrameRate())))
+            pygame.display.set_caption("Chess")
             # display background image
             self.screen.blit(self.background, (0, 0))
             # handle Events

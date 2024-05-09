@@ -1,5 +1,5 @@
 import pygame
-from setting import sounds
+# from setting import sounds
 
 class TextUI:
     def __init__(self, screen, text, x, y, fontSize, color):
@@ -47,7 +47,7 @@ class Button:
             self.tempcolor = self.hoverColor
             self.counter += 1
             if self.counter == 2:
-                sounds.check_sound.play()
+                None
         else:
             self.counter = 0
             self.tempcolor = self.backgroundColor
